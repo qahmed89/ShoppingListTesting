@@ -8,6 +8,6 @@ import androidx.room.RoomDatabase
     version = 1
 )
 abstract class ShoppingItemDataBase :RoomDatabase() {
-    abstract fun shoppingDao ():ShoppingDao 
+    abstract fun shoppingDao ():ShoppingDao
 
 }
