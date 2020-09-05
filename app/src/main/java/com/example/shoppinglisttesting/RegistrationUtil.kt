@@ -27,6 +27,9 @@ object RegistrationUtil {
         if (password.count { it.isDigit()}<2) {
             return false
         }
+        if (password != confirmedPassword){
+            return false
+        }
         return true
     }
 }
