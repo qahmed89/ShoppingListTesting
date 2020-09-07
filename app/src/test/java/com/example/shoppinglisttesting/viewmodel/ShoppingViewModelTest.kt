@@ -2,6 +2,7 @@ package com.example.shoppinglisttesting.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.shoppinglisttesting.MainCoroutineRule
+import com.example.shoppinglisttesting.data.local.ShoppingItem
 import com.example.shoppinglisttesting.getOrAwaitValueTest
 import com.example.shoppinglisttesting.other.Constants.MAX_NAME_LENGTH
 import com.example.shoppinglisttesting.other.Constants.MAX_PRICE_LENGTH
@@ -66,7 +67,7 @@ class ShoppingViewModelTest {
     fun `insert shopping item with too long price, returns error`() {
         val string = buildString {
             for (i in 1..MAX_PRICE_LENGTH + 1) {
-                append(1)
+                append(i)
             }
         }
         viewModel.insertShoppingItem("name", "5", string)
@@ -82,6 +83,22 @@ class ShoppingViewModelTest {
 
         val value = viewModel.insertShoppingItemStatus.getOrAwaitValueTest()
 
+        assertThat(value.getContentIfNotHandled()?.status).isEqualTo(Status.SUCCESS)
+    }
+
+    @Test
+    fun `delete   shopping item  with vaild item , return true ` (){
+        val shoppingitem = ShoppingItem("apple", 1, 1f, "", 1)
+        viewModel.insertShoppingItemIntoDb(shoppingitem)
+        viewModel.deleteShoppingItem(shoppingitem)
+        val allShoppingItems = viewModel.shoppingItems.getOrAwaitValueTest()
+        assertThat(allShoppingItems).doesNotContain(shoppingitem)
+    }
+
+    @Test
+    fun `search query    shopping item  with empty , return SUCCESS ` (){
+        viewModel.searchForImage("hhh")
+        val value = viewModel.images.getOrAwaitValueTest()
         assertThat(value.getContentIfNotHandled()?.status).isEqualTo(Status.SUCCESS)
     }
 
