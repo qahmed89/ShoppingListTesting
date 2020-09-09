@@ -18,8 +18,8 @@
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NAME"
         android:layout_marginLeft="16dp"
+        android:text="NAME"
         android:textSize="28sp"
         app:layout_constraintStart_toEndOf="@+id/tvShoppingItemAmount"
         app:layout_constraintTop_toTopOf="parent" />
