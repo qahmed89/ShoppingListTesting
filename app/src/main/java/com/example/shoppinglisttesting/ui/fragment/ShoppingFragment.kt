@@ -8,26 +8,23 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.shoppinglisttesting.R
 import com.example.shoppinglisttesting.other.Event
 import com.example.shoppinglisttesting.viewmodel.ShoppingViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_shopping.*
 
 @AndroidEntryPoint
 class ShoppingFragment : Fragment(R.layout.fragment_shopping) {
 
-     val viewModel: ShoppingViewModel by viewModels()
-     lateinit var viewModels: ShoppingViewModel
+     val viewModels: ShoppingViewModel by activityViewModels()
+    // lateinit var viewModels: ShoppingViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModels = ViewModelProvider(requireActivity()).get(ShoppingViewModel::class.java)
-        if (viewModels ==viewModel){
-            Toast.makeText(requireContext(), "true", Toast.LENGTH_SHORT).show()
-        }else{
-            Toast.makeText(requireContext(), "false", Toast.LENGTH_SHORT).show()
-
+     //   viewModels = ViewModelProvider(requireActivity()).get(ShoppingViewModel::class.java)
+        fabAddShoppingItem.setOnClickListener {
+            findNavController().navigate(ShoppingFragmentDirections.actionShoppingFragmentToAddShoppingItemFragment())
         }
-        viewModel.setCurImageUrl("sss")
-
     }
 }
