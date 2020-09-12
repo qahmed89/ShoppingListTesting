@@ -28,8 +28,8 @@ class AddShoppingItemFragment (
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(ShoppingViewModel::class.java)
 
-//        subscribeToObserver()
-//
+       // subscribeToObserver()
+
 //        btnAddShoppingItem.setOnClickListener {
 //            viewModel.insertShoppingItem(
 //                etShoppingItemName.text.toString(),
@@ -79,5 +79,5 @@ class AddShoppingItemFragment (
 //
 //           }
 //       })
-//    }
+  //  }
 }
