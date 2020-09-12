@@ -53,20 +53,20 @@ class AddShoppingItemFragmentTest {
 
 
 
-//    @Test
-//    fun clickInsertIntoDb_shoppingItemInsertedIntoDb(){
-//        val testViewModel = ShoppingViewModel(FakeShoppingRepository())
-//        launchFragmentInHiltContainer<AddShoppingItemFragment>(fragmentFactory = fragmentFactory ) {
-//            viewModel = testViewModel
-//        }
-//        onView(withId(R.id.etShoppingItemName)).perform(replaceText("Shopping item"))
-//        onView(withId(R.id.etShoppingItemAmount)).perform(replaceText("5"))
-//        onView(withId(R.id.etShoppingItemPrice)).perform(replaceText("5.5"))
-//        onView(withId(R.id.btnAddShoppingItem)).perform(click())
-//        assertThat(testViewModel.shoppingItems.getOrAwaitValue ()).contains(ShoppingItem("Shopping item", 5,5.5f,""))
-//
-//
-//    }
+    @Test
+    fun clickInsertIntoDb_shoppingItemInsertedIntoDb(){
+        val testViewModel = ShoppingViewModel(FakeShoppingRepository())
+        launchFragmentInHiltContainer<AddShoppingItemFragment>(fragmentFactory = fragmentFactory ) {
+            viewModel = testViewModel
+        }
+        onView(withId(R.id.etShoppingItemName)).perform(replaceText("Shopping item"))
+        onView(withId(R.id.etShoppingItemAmount)).perform(replaceText("5"))
+        onView(withId(R.id.etShoppingItemPrice)).perform(replaceText("5.5"))
+        onView(withId(R.id.btnAddShoppingItem)).perform(click())
+        assertThat(testViewModel.shoppingItems.getOrAwaitValue ()).contains(ShoppingItem("Shopping item", 5,5.5f,""))
+
+
+    }
 
 
     @Test

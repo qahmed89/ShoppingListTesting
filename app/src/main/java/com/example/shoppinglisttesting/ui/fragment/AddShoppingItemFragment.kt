@@ -28,15 +28,15 @@ class AddShoppingItemFragment (
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(ShoppingViewModel::class.java)
 
-//        subscribeToObserver()
-//
-//        btnAddShoppingItem.setOnClickListener {
-//            viewModel.insertShoppingItem(
-//                etShoppingItemName.text.toString(),
-//                etShoppingItemAmount.text.toString(),
-//                etShoppingItemPrice.text.toString()
-//            )
-//        }
+        subscribeToObserver()
+
+        btnAddShoppingItem.setOnClickListener {
+            viewModel.insertShoppingItem(
+                etShoppingItemName.text.toString(),
+                etShoppingItemAmount.text.toString(),
+                etShoppingItemPrice.text.toString()
+            )
+        }
 
         ivShoppingImage.setOnClickListener {
             findNavController().navigate(AddShoppingItemFragmentDirections.actionAddShoppingItemFragmentToImagePickFragment())
@@ -52,32 +52,32 @@ class AddShoppingItemFragment (
         requireActivity().onBackPressedDispatcher.addCallback(callback)
     }
 
-//   private fun subscribeToObserver(){
-//      viewModel.curImageUrl.observe(viewLifecycleOwner, Observer {
-//        glide.load(it).into(ivShoppingImage)
-//      })
-//       viewModel.insertShoppingItemStatus.observe(viewLifecycleOwner, Observer {
-//           it?.getContentIfNotHandled()?.let {result->
-//               when (result.status){
-//                   Status.SUCCESS->{
-//                       Snackbar.make(
-//                           requireActivity().rootLayout,
-//                           "Add Shopping Item",
-//                       Snackbar.LENGTH_LONG
-//                           ).show()
-//                   }
-//                   Status.ERROR->{
-//                       Snackbar.make(
-//                           requireActivity().rootLayout,
-//                           result.message?:"Add Shopping Item",
-//                           Snackbar.LENGTH_LONG
-//                       ).show()                   }
-//                   Status.LOADING->{
-//                       /* NO-OP*/
-//                   }
-//               }
-//
-//           }
-//       })
-//    }
+   private fun subscribeToObserver(){
+      viewModel.curImageUrl.observe(viewLifecycleOwner, Observer {
+        glide.load(it).into(ivShoppingImage)
+      })
+       viewModel.insertShoppingItemStatus.observe(viewLifecycleOwner, Observer {
+           it?.getContentIfNotHandled()?.let {result->
+               when (result.status){
+                   Status.SUCCESS->{
+                       Snackbar.make(
+                           requireActivity().rootLayout,
+                           "Add Shopping Item",
+                       Snackbar.LENGTH_LONG
+                           ).show()
+                   }
+                   Status.ERROR->{
+                       Snackbar.make(
+                           requireActivity().rootLayout,
+                           result.message?:"Add Shopping Item",
+                           Snackbar.LENGTH_LONG
+                       ).show()                   }
+                   Status.LOADING->{
+                       /* NO-OP*/
+                   }
+               }
+
+           }
+       })
+    }
 }
