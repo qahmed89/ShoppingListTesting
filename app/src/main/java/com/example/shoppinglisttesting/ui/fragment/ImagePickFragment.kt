@@ -11,10 +11,11 @@ import com.example.shoppinglisttesting.R
 import com.example.shoppinglisttesting.adapters.ImageAdapter
 import com.example.shoppinglisttesting.other.Constants.GRID_SPAN_COUNT
 import com.example.shoppinglisttesting.viewmodel.ShoppingViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_image_pick.*
 import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class ImagePickFragment @Inject constructor(val imageAdapter: ImageAdapter) :
     Fragment(R.layout.fragment_image_pick) {
 
